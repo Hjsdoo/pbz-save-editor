@@ -2,7 +2,39 @@
 <html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>影之刃零 · 存档编辑器</title><meta name="description" content="在浏览器中查看和修改影之刃零存档"><link rel="stylesheet" href="style.css"></head>
 <body><header><div class="brand"><span class="mark">刃</span><span>影之刃零 <small>存档编辑器</small></span></div><span class="privacy">本地处理 · 浏览器内完成</span></header>
 <main><section class="hero"><div class="eyebrow">PHANTOM BLADE ZERO</div><h1>你的江湖，<br>由你决定。</h1><p>读取存档，调整尘、武器等级与能力修行，导出修改后的存档。</p></section>
-<div class="workspace"><section class="panel"><div class="panel-head"><div><h2>打开存档</h2><p>支持 PBZS v3 格式的 .sav 文件</p></div><span class="tag">STEAM PC</span></div><label class="drop" id="drop"><input id="file" type="file" accept=".sav"><span class="file-icon">↥</span><strong id="filename">选择或拖入存档文件</strong><span>文件仅在浏览器中读取</span><span class="button ghost">选择文件</span></label><div id="status" class="status" role="status">等待选择存档</div></section>
+<div class="workspace"><section class="panel"><div class="panel-head"><div><h2>打开存档</h2><p>支持 PBZS v3 格式的 .sav 文件</p></div><span class="tag">STEAM PC</span></div><label class="drop" id="drop"><input id="file" type="file" accept=".sav"><span class="file-icon">↥</span><strong id="filename">选择或拖入存档文件</strong><span>文件仅在浏览器中读取</span><span class="button ghost">选择文件</span></label><div id="status" class="status" role="status">等待选择存档</div>
+<details class="save-guide">
+  <summary><span>存档在哪？如何使用修改后的存档</span><span class="guide-toggle" aria-hidden="true"></span></summary>
+  <div class="guide-body">
+    <div class="guide-grid">
+      <section class="guide-block">
+        <h3>找到存档文件夹</h3>
+        <p>在 Steam 游戏库中右键《影之刃零》，依次选择“管理”→“浏览本地文件”，然后进入：</p>
+        <code class="save-path">ProjectPBZ\Saved\SaveGames\Steam\&lt;SteamID&gt;</code>
+        <p><code>&lt;SteamID&gt;</code> 是你的 Steam 数字账号文件夹。例如游戏安装在 D 盘时，路径可能是：</p>
+        <code class="save-path">D:\Games\Steam\steamapps\common\PBZ\ProjectPBZ\Saved\SaveGames\Steam\&lt;SteamID&gt;</code>
+      </section>
+      <section class="guide-block">
+        <h3>存档文件与备份</h3>
+        <p><code>PBZSaveGame.sav</code> 是游戏读取的主存档。同一文件夹中的备份按时间分类：</p>
+        <ul class="backup-list">
+          <li><code>1RealTime</code><span>实时存档</span></li>
+          <li><code>2Hourly</code><span>小时存档</span></li>
+          <li><code>3Daily</code><span>天存档</span></li>
+        </ul>
+      </section>
+    </div>
+    <div class="guide-steps">
+      <h3>修改与载入</h3>
+      <ol>
+        <li>完全退出游戏，将主存档或上述文件夹中的备份复制一份，保留原文件用于恢复。</li>
+        <li>在本页面打开复制的存档，选择要修改的槽位，完成调整后下载修改版。</li>
+        <li>将下载的文件命名为 <code>PBZSaveGame.sav</code>，放回 SteamID 文件夹并替换主存档。</li>
+        <li>启动游戏，选择“载入游戏”。第一个存档通常是修改后的进度，请核对存档时间和槽位。</li>
+      </ol>
+    </div>
+  </div>
+</details></section>
 <section class="panel" id="editor" hidden><div class="panel-head"><div><h2>存档内容</h2><p>选择要修改的存档槽位</p></div><div class="field slot"><label for="slot">存档槽位</label><select id="slot"></select></div></div>
 <div class="metrics"><div><small>意识尘埃</small><strong id="dust-info">—</strong></div><div><small>剩余天数</small><strong id="days">—</strong></div><div><small>武器记录</small><strong id="weapon-count">—</strong></div></div>
 <div class="tabs" role="tablist"><button class="tab active" data-tab="overview" role="tab" aria-selected="true">基础信息</button><button class="tab" data-tab="weapons" role="tab" aria-selected="false">武器等级</button><button class="tab" data-tab="abilities" role="tab" aria-selected="false">能力修行</button></div>
