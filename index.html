@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>影之刃零 · 存档编辑器</title><meta name="description" content="在浏览器中查看和修改影之刃零存档"><link rel="stylesheet" href="style.css"></head>
 <body><header><div class="brand"><span class="mark">刃</span><span>影之刃零 <small>存档编辑器</small></span></div><span class="privacy">本地处理 · 浏览器内完成</span></header>
-<main><section class="hero"><div class="eyebrow">PHANTOM BLADE ZERO</div><h1>你的武林，<br>由你决定。</h1><p>读取存档，调整尘、武器等级与能力修行，导出修改后的存档。</p></section>
+<main><section class="hero"><div class="eyebrow">PHANTOM BLADE ZERO</div><h1>你的武林，<br>由你决定。</h1><p>读取存档，调整尘、武器、能力与收集记录，导出修改后的存档。</p></section>
 <div class="workspace"><section class="panel"><div class="panel-head"><div><h2>打开存档</h2><p>支持 PBZS v3 格式的 .sav 文件</p></div><span class="tag">STEAM PC</span></div><label class="drop" id="drop"><input id="file" type="file" accept=".sav"><span class="file-icon">↥</span><strong id="filename">选择或拖入存档文件</strong><span>文件仅在浏览器中读取</span><span class="button ghost">选择文件</span></label><div id="status" class="status" role="status">等待选择存档</div>
 <details class="save-guide">
   <summary><span>存档在哪？如何使用修改后的存档</span><span class="guide-toggle" aria-hidden="true"></span></summary>
@@ -37,9 +37,17 @@
 </details></section>
 <section class="panel" id="editor" hidden><div class="panel-head"><div><h2>存档内容</h2><p>选择要修改的存档槽位</p></div><div class="field slot"><label for="slot">存档槽位</label><select id="slot"></select></div></div>
 <div class="metrics"><div><small>意识尘埃</small><strong id="dust-info">—</strong></div><div><small>剩余天数</small><strong id="days">—</strong></div><div><small>武器记录</small><strong id="weapon-count">—</strong></div></div>
-<div class="tabs" role="tablist"><button class="tab active" data-tab="overview" role="tab" aria-selected="true">基础信息</button><button class="tab" data-tab="weapons" role="tab" aria-selected="false">武器等级</button><button class="tab" data-tab="abilities" role="tab" aria-selected="false">能力修行</button></div>
+<div class="tabs" role="tablist"><button class="tab active" data-tab="overview" role="tab" aria-selected="true">基础信息</button><button class="tab" data-tab="weapons" role="tab" aria-selected="false">武器等级</button><button class="tab" data-tab="abilities" role="tab" aria-selected="false">能力修行</button><button class="tab" data-tab="collectibles" role="tab" aria-selected="false">收集物品</button></div>
 <div id="overview" class="tab-content"><div class="section-head"><div><h3>意识尘埃</h3><p>调整选中槽位的尘数量</p></div></div><div class="field dust"><label for="dust">数量</label><input id="dust" type="number" min="0" max="99999999" step="1"></div></div>
 <div id="weapons" class="tab-content" hidden><div class="section-head"><div><h3>武器等级</h3><p>直接输入 1–60 的整数。游戏内可强化上限随轮回提升。</p></div><button id="raise" class="button small">低于 30 级调至 30</button></div><div class="search"><input id="search" type="search" placeholder="搜索武器名称或 ID"></div><div id="weapon-list"></div></div>
 <div id="abilities" class="tab-content" hidden><div class="section-head"><div><h3>能力修行</h3><p>常态能力的三个末端节点，直接输入 0–30 的整数。</p></div></div><div class="notice">能力与字段的对应关系基于节点顺序推测，请在游戏中核对效果。</div><div id="ability-list"></div></div>
+<div id="collectibles" class="tab-content" hidden>
+  <div class="section-head"><div><h3>黑石与杀气琥珀</h3><p>分别修改背包数量与存档中的累计记录。</p></div></div>
+  <div class="notice">实验功能：修改记录后，游戏里的数量和永久加成是否同步生效尚未确认。请先备份存档，在游戏中核对。</div>
+  <div id="material-list"></div>
+  <div class="section-head flower-heading"><div><h3>大型记忆之花</h3><p id="flower-count"></p></div></div>
+  <p class="flower-note">勾选要补全的花，将写入这朵花及其 6 片记忆碎片的收集记录；已完成的花不可重复勾选。游戏里的数量和生命加成是否生效尚未确认。</p>
+  <div id="flower-list"></div>
+</div>
 <div class="actions"><div><strong>导出修改后的存档</strong><p>请保留原存档备份，导出后完全退出游戏再替换。</p></div><button id="download" class="button primary">下载修改版 <span>↓</span></button></div></section></div>
 <footer>非官方工具 · PBZS v3 · 请备份存档</footer></main><script type="module" src="app.js"></script></body></html>
