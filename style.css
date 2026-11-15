@@ -45,3 +45,9 @@
 .ability-row input[aria-invalid=true] {
   border-color: #e89983;
 }
+
+/* Collectible records */
+.material-row{display:grid;grid-template-columns:minmax(100px,1fr) repeat(2,minmax(105px,150px));gap:12px;align-items:end;padding:14px 0;border-bottom:1px solid rgba(128,128,128,.2)}
+.material-row strong,.material-row small,.flower-info strong,.flower-info small{display:block}.material-row small,.flower-info small{margin-top:4px;opacity:.65;font-size:12px}.material-field span{display:block;margin-bottom:5px;font-size:12px;opacity:.75}.material-field input{width:100%}.flower-heading{margin-top:28px}.flower-note{font-size:13px;line-height:1.7;opacity:.8}.flower-row{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid rgba(128,128,128,.2);cursor:pointer}.flower-row input{width:18px;height:18px;accent-color:#bb8747;flex:none}.flower-row:has(input:disabled){cursor:default;opacity:.65}@media(max-width:520px){.material-row{grid-template-columns:1fr 1fr}.material-row>div{grid-column:1/-1}}
+
+.material-field input{background:#141917;border:1px solid #465249;border-radius:7px;color:#e9eee5;padding:11px 13px;font:inherit}.material-field input:focus{outline:2px solid #aabd85}.tabs{overflow-x:auto}.tab{white-space:nowrap;flex:none}
