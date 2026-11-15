@@ -22,3 +22,26 @@
 .guide-steps li{padding-left:3px;margin:5px 0}
 .guide-steps li::marker{color:#b9ce91;font-weight:700}
 @media(max-width:700px){.guide-grid{grid-template-columns:1fr}.guide-block{padding:15px}.save-path{font-size:11px}}
+
+/* 让等级输入框保持直接输入，同时隐藏浏览器的步进箭头。 */
+.weapon-row input[type=number],
+.ability-row input[type=number] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+.weapon-row input[type=number]::-webkit-inner-spin-button,
+.weapon-row input[type=number]::-webkit-outer-spin-button,
+.ability-row input[type=number]::-webkit-inner-spin-button,
+.ability-row input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.weapon-row input:focus-visible,
+.ability-row input:focus-visible {
+  outline: 2px solid #aabd85;
+  outline-offset: 2px;
+}
+.weapon-row input[aria-invalid=true],
+.ability-row input[aria-invalid=true] {
+  border-color: #e89983;
+}
